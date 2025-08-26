@@ -1,8 +1,8 @@
 #import "@preview/simple-technical-resume:0.1.0": *
 
 #let name = "Ricky Zhang"
-#let phone = "+1 904 342 9170"
-#let email = "rickyzhang196@outlook.com"
+#let phone = "-------------"
+#let email = "----------------"
 #let github = "therickyzhang"
 #let linkedin = "therickyzhang"
 #let personal-site = "therickyzhang.com"
