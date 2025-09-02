@@ -1,8 +1,8 @@
 #import "@preview/simple-technical-resume:0.1.0": *
 
-#let name = "Ricky Zhang"
-#let phone = "-------------"
-#let email = "----------------"
+#let name = "_________"
+#let phone = "____________"
+#let email = "__________"
 #let github = "therickyzhang"
 #let linkedin = "therickyzhang"
 #let personal-site = "therickyzhang.com"
@@ -48,7 +48,7 @@
     "University of Florida",
     "Gainesville, FL",
     "Bachelor of Science",
-    "Computer Science and Mathematics, Honors Program",
+    "Computer Science and Mathematics",
     datetime(year: 2023, month: 8, day: 1),
     datetime(year: 2027, month: 5, day: 1),
   )[
@@ -69,7 +69,7 @@
     "Software Engineering Intern (Pricing)",
     emph[Sumitomo Mitsui Banking Corporation],
     "New York, NY",
-    datetime(year: 2025, month: 5, day: 1),
+    datetime(year: 2025, month: 6, day: 1),
     datetime(year: 2025, month: 8, day: 1),
   )[
     - Built and integrated a *cash-flow pipeline for interest rate swaps* with Spring Boot, Kafka, and RHEL
@@ -114,7 +114,7 @@
     "Teaching Assistant",
     emph[University of Florida],
     "Gainesville, FL",
-    datetime(year: 2023, month: 1, day: 1),
+    datetime(year: 2024, month: 1, day: 1),
     datetime(year: 2025, month: 5, day: 1),
   )[
     - Programming Fundamentals, Competitive Programming, Discrete Math, Calculus 2
@@ -137,7 +137,7 @@
 
 #custom-title("Projects")[
   #project-heading(
-    "3D Game Engine (Battlebeyz) | " + emph[C++, OpenGL, ImGui] + h(1fr) + [May 2024 -- Present],
+    "3D Game Engine (Battlebeyz) | " + emph[C++, OpenGL, ImGui] + h(1fr) + [May 2024 -- Feb 2025],
   )[
     - Developed a *3D renderer* and *custom physics engine* from scratch using low-level graphics libraries
     - Achieved unmatched simulation accuracy for *spinning tops*, surpassing existing physics engines
