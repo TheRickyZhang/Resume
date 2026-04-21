@@ -1,6 +1,6 @@
 #import "@preview/simple-technical-resume:0.1.0": *
 
-#let name = "_________"
+#let name = "Ricky Zhang"
 #let phone = "____________"
 #let email = "__________"
 #let github = "therickyzhang"
@@ -52,19 +52,30 @@
     datetime(year: 2023, month: 8, day: 1),
     datetime(year: 2027, month: 5, day: 1),
   )[
-    Relevant Coursework: Data Structures & Algorithms, Operating Systems, SWE, Databases #h(1fr) GPA: 4.0
+    Relevant Coursework: Data Structures & Algorithms, Operating Systems, SWE, Databases #h(1fr) GPA: 3.97
   ]
 ]
 
 #custom-title("Skills")[
   #skills()[
-    - *Programming Languages: * C++, TypeScript, Java, Python, SQL, C\#, Rust
-    - *Frameworks/Libraries: * Boost, ImGui, React, Spring Boot, JavaFX, .NET, Astro, PyTorch
-    - *Tools/Platforms: * Jira, Confluence, Postman, Kafka, RHEL, Docker, Doxygen, MongoDB, GCP, AWS
+    - *Programming Languages: * C++, Java, Python, Typst, Lua, Rust, TypeScript, Bash
+    - *Frameworks/Libraries: * Boost, ImGui, React, Spring Boot, JavaFX, .NET,
+    - *Tools/Platforms: * Linux, GDB, Doxygen, Docker, Kafka, GTest, MongoDB, Jira, Confluence
   ]
 ]
 
 #custom-title("Work Experience")[
+  #work-heading(
+    "Trading Systems Engineering Intern",
+    emph[Susquehanna International Group (SIG)],
+    "Bala Cynwyd, PA",
+    datetime(year: 2026, month: 6, day: 1),
+    datetime(year: 2026, month: 8, day: 7),
+  )[
+    - Incoming Summer 2026, Low-latency C++
+  ]
+
+
   #work-heading(
     "Software Engineering Intern (Pricing)",
     emph[Sumitomo Mitsui Banking Corporation],
@@ -73,20 +84,20 @@
     datetime(year: 2025, month: 8, day: 1),
   )[
     - Built and integrated a *cash-flow pipeline for interest rate swaps* with Spring Boot, Kafka, and RHEL
-    - Contributed to migration of C++ *quant library* components (futures, yield curves, swaps) to Java
+    - Contributed to migration of C++ quant library components (futures, yield curves, swaps) to Java
     - Achieved 30% faster Maven builds for pricer service and QA API by cleaning legacy technical debt
   ]
 
-  #work-heading(
-    "Technology Fellow",
-    emph[Youth Civic Hub],
-    "New York, NY",
-    datetime(year: 2024, month: 9, day: 1),
-    datetime(year: 2024, month: 12, day: 1),
-  )[
-    - Refactored a Gatsby/GraphQL codebase for 4x faster builds and 80% lower hosting costs
-  ]
-
+  // #work-heading(
+  //   "Technology Fellow",
+  //   emph[Youth Civic Hub],
+  //   "New York, NY",
+  //   datetime(year: 2024, month: 9, day: 1),
+  //   datetime(year: 2024, month: 12, day: 1),
+  // )[
+  //   - Refactored a Gatsby/GraphQL codebase for 4x faster builds and 80% lower hosting costs
+  // ]
+  //
   #work-heading(
     "Lead Developer",
     emph[Florida Community Innovation Foundation, Inc.],
@@ -140,20 +151,27 @@
     "3D Game Engine (Battlebeyz) | " + emph[C++, OpenGL, ImGui] + h(1fr) + [May 2024 -- Feb 2025],
   )[
     - Developed a *3D renderer* and *custom physics engine* from scratch using low-level graphics libraries
-    - Achieved unmatched simulation accuracy for *spinning tops*, surpassing existing physics engines
-    - Optimized architecture with multithreading, advanced memory management, and performance profiling
+    - Achieved improved heuristic-based simulation accuracy for *spinning tops* over existing physics engines
+    - Optimized architecture with multithreading, memory management, and performance profiling
   ]
 
   #project-heading(
-    "Jane Street Puzzle Programs | " + emph[Python, C++] + h(1fr) + [ Dec 2023 -- Aug 2024 ],
+    "Vimficiency | " + emph[C++, Lua] + h(1fr) + [ Dec 2025 -- Present ],
   )[
-    - Implemented algorithmic solutions for 7+ monthly Jane Street puzzles using mathematical modeling
-    - Leveraged state-space reduction, regression analysis, heuristics, image processing, and computer vision
+    - Neovim plugin that analyzes editing actions and recommends more optimal sequences for the same outcome
+    - Uses a heuristical A\* search over a customizable cost model with keystroke effort and semantic preference
   ]
+  // #project-heading(
+  //   "Jane Street Puzzle Programs | " + emph[Python, C++] + h(1fr) + [ Dec 2023 -- Aug 2024 ],
+  // )[
+  //   - Implemented algorithmic solutions for 7+ monthly Jane Street puzzles using mathematical modeling
+  //   - Leveraged state-space reduction, regression analysis, and image processing with common libraries
+  // ]
 ]
 
 
 #custom-title("Awards/Certifications")[
-  Top 750 Putnam (2024), Akuna Options 101, NVIDIA Fundamentals of Deep Learning
+  Top 750 Putnam, Akuna Options 201, NVIDIA Fundamentals of Deep Learning
 ]
+
 
