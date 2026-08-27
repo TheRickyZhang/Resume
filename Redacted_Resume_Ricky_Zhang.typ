@@ -7,6 +7,8 @@
 #let linkedin = "therickyzhang"
 #let personal-site = "therickyzhang.com"
 
+// Link to Latex: https://www.overleaf.com/project/66db91a8e01fa87bf14863b6
+
 // Converts datetime format into readable period.
 #let period_worked(start-date, end-date) = {
   // sanity checks
@@ -17,16 +19,58 @@
     end-date = datetime.today()
   }
 
+  let today = datetime.today()
   return [
     #start-date.display("[month repr:short] [year]") --
     #if (
-      (end-date.month() == datetime.today().month()) and (end-date.year() == datetime.today().year())
+      (end-date.year() == today.year())
+        and (end-date.month() == today.month())
+        and (today.day() <= end-date.day())
     ) [
       Present
     ] else [
       #end-date.display("[month repr:short] [year]")
     ]
   ]
+}
+
+// The package's headings close over its own period_worked, so redefine them here.
+#let heading-2x2(cols, r1c1, r1c2, r2c1, r2c2) = {
+  grid(
+    columns: cols,
+    align(left)[#r1c1 \ #r2c1],
+    align(right)[#r1c2 \ #r2c2],
+  )
+}
+
+#let work-heading(title, company, location, start-date, end-date, body) = {
+  heading-2x2(
+    (1fr, 1fr),
+    [*#title*], [*#period_worked(start-date, end-date)*],
+    [#company], emph(location),
+  )
+  v(-0.2em)
+  if body != [] {
+    v(-0.4em)
+    set par(leading: 0.6em)
+    set list(indent: 0.5em)
+    body
+  }
+}
+
+#let education-heading(institution, location, degree, major, start-date, end-date, body) = {
+  heading-2x2(
+    (70%, 30%),
+    [*#institution*], [*#location*],
+    [#degree, #major], period_worked(start-date, end-date),
+  )
+  v(-0.2em)
+  if body != [] {
+    v(-0.4em)
+    set par(leading: 0.6em)
+    set list(indent: 0.5em)
+    body
+  }
 }
 
 #show: resume.with(
@@ -52,15 +96,14 @@
     datetime(year: 2023, month: 8, day: 1),
     datetime(year: 2027, month: 5, day: 1),
   )[
-    Relevant Coursework: Data Structures & Algorithms, Operating Systems, SWE, Databases #h(1fr) GPA: 3.97
+    Coursework: DSA, OS, Competitive Programming, Combinatorics, Graph Theory #h(1fr) GPA: 3.98
   ]
 ]
 
 #custom-title("Skills")[
   #skills()[
-    - *Programming Languages: * C++, Java, Python, Typst, Lua, Rust, TypeScript, Bash
-    - *Frameworks/Libraries: * Boost, ImGui, React, Spring Boot, JavaFX, .NET,
-    - *Tools/Platforms: * Linux, GDB, Doxygen, Docker, Kafka, GTest, MongoDB, Jira, Confluence
+    - *Programming Languages: * C++, Java, Python, Lua, Typst, TypeScript, Rust, Bash, SQL
+    - *Libraries/Tools:* Linux, GoogleTest, Google Benchmark, Boost, FuzzTest, perf, ImGui, Docker
   ]
 ]
 
@@ -72,18 +115,21 @@
     datetime(year: 2026, month: 6, day: 1),
     datetime(year: 2026, month: 8, day: 7),
   )[
-    - Incoming Summer 2026, Low-latency C++
+    - Built an end-to-end market-making trading system leveraging kernel bypass for *sub-5us p99* tick-to-trade
+    - Designed and benchmarked an *options exchange* from scratch, from spec to production to analysis
+    - Swept synthetic order flow by depth, match rate, and load to isolate cache, layout, and queue costs
+    - Performance tuned pooled indirection versus inline payloads per traffic pattern in queues and book entries
   ]
 
 
   #work-heading(
-    "Software Engineering Intern (Pricing)",
+    "Software Engineering Intern",
     emph[Sumitomo Mitsui Banking Corporation],
     "New York, NY",
     datetime(year: 2025, month: 6, day: 1),
     datetime(year: 2025, month: 8, day: 1),
   )[
-    - Built and integrated a *cash-flow pipeline for interest rate swaps* with Spring Boot, Kafka, and RHEL
+    - Built and integrated a *cash-flow* pipeline for interest rate swaps with Spring Boot, Kafka, and RHEL
     - Contributed to migration of C++ quant library components (futures, yield curves, swaps) to Java
     - Achieved 30% faster Maven builds for pricer service and QA API by cleaning legacy technical debt
   ]
@@ -98,7 +144,8 @@
   //   - Refactored a Gatsby/GraphQL codebase for 4x faster builds and 80% lower hosting costs
   // ]
   //
-  #work-heading(
+
+  /* #work-heading(
     "Lead Developer",
     emph[Florida Community Innovation Foundation, Inc.],
     "Gainesville, FL",
@@ -107,18 +154,18 @@
   )[
     - Led *Florida Resource Map* (FRM) web development, connecting social workers to 2000+ trusted resources
     - Worked with SWE/CX/PR teams, contractors, and 7 charity partners from *planning to GA* in one year
-    - Promoted from intern to lead; coordinated standups, grooming calls, CI/CD with the MERN stack
   ]
+  */
 
   #work-heading(
     "Undergraduate Researcher",
     emph[Geoplexity Research Group],
     "Gainesville, FL",
-    datetime(year: 2024, month: 2, day: 1),
+    datetime(year: 2024, month: 1, day: 1),
     datetime(year: 2024, month: 8, day: 1),
   )[
     - Devised C++/Nauty algorithms with Dr. Sitharam's group to detect rigid partial 3-tree elements
-    - Optimized constraint-graph roadmap computation for 60% speed improvements over hash map methods
+    - Optimized constraint-graph roadmap computation for 60% speed improvements over hash-map methods
   ]
 
   #work-heading(
@@ -126,52 +173,56 @@
     emph[University of Florida],
     "Gainesville, FL",
     datetime(year: 2024, month: 1, day: 1),
-    datetime(year: 2025, month: 5, day: 1),
+    datetime(year: 2026, month: 5, day: 1),
   )[
-    - Programming Fundamentals, Competitive Programming, Discrete Math, Calculus 2
+    - Taught Competitive Programming, C++ Fundamentals, and Discrete Math
   ]
 ]
 
 #custom-title("Involvement")[
+  #project-heading(
+    "President — UF Quant Club" + h(1fr) + [ January 2026 -- Present ],
+  )[
+    - Lead a *100+ member* quantitative finance organization backed by \$3,000 in firm sponsorships
+    - Host weekly interview prep sessions and co-developed a C++ developer education program
+  ]
+
+
   #grid(
     columns: (3fr, 1fr),
-    [*Webmaster | #emph[UF Society of Asian Scientists and Engineers (SASE)]*],
+    [*Webmaster — UF Society of Asian Scientists and Engineers (SASE)*],
     [#align(right)[*#period_worked(datetime(year: 2024, month: 6, day: 1), datetime(year: 2025, month: 5, day: 1))*]],
   )
   #v(-0.5em)
   #set par(leading: 0.6em)
   #set list(indent: 0.5em)
-  - Organized *60+ attendee workshops* on API integration, SSG/SSR architecture, and industry practices
-  - Spearheaded a *team of 18* to develop a website with React Query, TanStack, Tailwind, and Turso
-  - Deployed a real-time stock market simulator using Bun Websockets to 60+ concurrent GBM attendees
+  - Hosted workshops for *60+ attendees* on websockets, SSG/SSR architecture, and industry practices
+  - Spearheaded a team of 18 to develop a website with React Query, TanStack, Tailwind, and Turso
 ]
 
 #custom-title("Projects")[
   #project-heading(
-    "3D Game Engine (Battlebeyz) | " + emph[C++, OpenGL, ImGui] + h(1fr) + [May 2024 -- Feb 2025],
+    "Vimficiency | " + emph[C++, Lua] + h(1fr) + [ Dec 2025 -- Present ],
   )[
-    - Developed a *3D renderer* and *custom physics engine* from scratch using low-level graphics libraries
-    - Achieved improved heuristic-based simulation accuracy for *spinning tops* over existing physics engines
-    - Optimized architecture with multithreading, memory management, and performance profiling
+    - Analyzes editing actions as a *Neovim plugin* that recommends more efficient Vim command sequences
+    - Uses *Anytime Repairing A\* * search across motion/edit/composition optimizers with customizable effort
+    - Integrates a Lua editor layer with an in-process C++ analysis engine via a C ABI
+    - Maintains comprehensive benchmarks, documentation, and property/fuzz/approval tests
+    // - Adapts over time, maintains a database of things
+    // Talk about how I worked with LLM-assisted development on a large scale!
   ]
 
   #project-heading(
-    "Vimficiency | " + emph[C++, Lua] + h(1fr) + [ Dec 2025 -- Present ],
+    "3D Game Engine (Battlebeyz) | " + emph[C++, OpenGL, ImGui] + h(1fr) + [May 2024 -- Feb 2025],
   )[
-    - Neovim plugin that analyzes editing actions and recommends more optimal sequences for the same outcome
-    - Uses a heuristical A\* search over a customizable cost model with keystroke effort and semantic preference
+    - Developed a *3D renderer* and *custom physics engine* from scratch using low-level graphics libraries
+    - Improved heuristic-based simulation accuracy for *spinning tops* over existing physics engines
+    - Optimized architecture with multithreading, memory management, and performance profiling
   ]
-  // #project-heading(
-  //   "Jane Street Puzzle Programs | " + emph[Python, C++] + h(1fr) + [ Dec 2023 -- Aug 2024 ],
-  // )[
-  //   - Implemented algorithmic solutions for 7+ monthly Jane Street puzzles using mathematical modeling
-  //   - Leveraged state-space reduction, regression analysis, and image processing with common libraries
-  // ]
 ]
 
 
 #custom-title("Awards/Certifications")[
-  Top 750 Putnam, Akuna Options 201, NVIDIA Fundamentals of Deep Learning
+  Top 750 Putnam, Akuna Options 201
 ]
-
 
