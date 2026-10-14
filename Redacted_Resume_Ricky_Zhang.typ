@@ -96,14 +96,14 @@
     datetime(year: 2023, month: 8, day: 1),
     datetime(year: 2027, month: 5, day: 1),
   )[
-    Coursework: DSA, OS, Competitive Programming, Combinatorics, Graph Theory #h(1fr) GPA: 3.98
+    Coursework: DSA, OS, Competitive Programming, Combinatorics, Graph Theory #h(1fr) GPA: 3.97
   ]
 ]
 
 #custom-title("Skills")[
   #skills()[
     - *Programming Languages: * C++, Java, Python, Lua, Typst, TypeScript, Rust, Bash, SQL
-    - *Libraries/Tools:* Linux, GoogleTest, Google Benchmark, Boost, FuzzTest, perf, ImGui, Docker
+    - *Libraries/Tools:* Linux, GoogleTest, Google Benchmark, Boost, FuzzTest, perf, ImGui, Docker, Kafka
   ]
 ]
 
@@ -115,10 +115,10 @@
     datetime(year: 2026, month: 6, day: 1),
     datetime(year: 2026, month: 8, day: 7),
   )[
-    - Built an end-to-end market-making trading system leveraging kernel bypass for *sub-5us p99* tick-to-trade
-    - Designed and benchmarked an *options exchange* from scratch, from spec to production to analysis
-    - Swept synthetic order flow by depth, match rate, and load to isolate cache, layout, and queue costs
-    - Performance tuned pooled indirection versus inline payloads per traffic pattern in queues and book entries
+  - Co-built a *kernel-bypass* market maker for 13 equities in a team of 3, reaching *sub-5us p99* tick-to-trade
+  - Explored "leapfrogging" bracket update dynamics, optimized order book internals, and engineered risk checks
+  - Designed and benchmarked an *options exchange* from scratch, following a custom wire spec
+  - Parameterized synthetic order flow and benchmarked pooled vs inline payloads for queue and book entries
   ]
 
 
@@ -130,7 +130,7 @@
     datetime(year: 2025, month: 8, day: 1),
   )[
     - Built and integrated a *cash-flow* pipeline for interest rate swaps with Spring Boot, Kafka, and RHEL
-    - Contributed to migration of C++ quant library components (futures, yield curves, swaps) to Java
+    - Contributed to migration of quant library components (futures, yield curves, swaps) from C++ to Java
     - Achieved 30% faster Maven builds for pricer service and QA API by cleaning legacy technical debt
   ]
 
@@ -184,7 +184,7 @@
     "President — UF Quant Club" + h(1fr) + [ January 2026 -- Present ],
   )[
     - Lead a *100+ member* quantitative finance organization backed by \$3,000 in firm sponsorships
-    - Host weekly interview prep sessions and co-developed a C++ developer education program
+    - Hosted weekly interview prep sessions for trading and development roles
   ]
 
 
@@ -207,9 +207,8 @@
     - Analyzes editing actions as a *Neovim plugin* that recommends more efficient Vim command sequences
     - Uses *Anytime Repairing A\* * search across motion/edit/composition optimizers with customizable effort
     - Integrates a Lua editor layer with an in-process C++ analysis engine via a C ABI
-    - Maintains comprehensive benchmarks, documentation, and property/fuzz/approval tests
+    - Built through *LLM-assisted development* at scale, gated by property, fuzz, and approval test suites
     // - Adapts over time, maintains a database of things
-    // Talk about how I worked with LLM-assisted development on a large scale!
   ]
 
   #project-heading(
@@ -223,6 +222,6 @@
 
 
 #custom-title("Awards/Certifications")[
-  Top 750 Putnam, Akuna Options 201
+  Top 750 Putnam, Akuna Options 201, 3rd Place ICPC Regionals
 ]
 
